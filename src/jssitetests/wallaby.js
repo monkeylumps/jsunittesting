@@ -2,23 +2,22 @@
     return {
         files: [
             { pattern: 'node_modules/systemjs/dist/system.js', instrument: false },
-            { pattern: 'node_modules/typescript/lib/typescript.js', instrument: false },
-            { pattern: 'config.js', instrument: false },
+            //{ pattern: 'config.js', instrument: false },
             { pattern: 'scripts/app/*.ts', load: false },
         ],
 
         tests: [
-          { pattern: 'scripts/tests/*spec.ts', load: false }
+          { pattern: 'scripts/tests/systemts.spec.ts', load: false }
         ],
 
-        //compilers: {
-        //    'scripts/*/*.ts': wallaby.compilers.typeScript({
-        //        "module": 'system', // or amd
-        //        "emitDecoratorMetadata": true,
-        //        "experimentalDecorators": true,
-        //        "noImplicitAny": false
-        //    })
-        //},
+        compilers: {
+            'scripts/*/*.ts': wallaby.compilers.typeScript({
+                "module": 'system', // or amd
+                "emitDecoratorMetadata": true,
+                "experimentalDecorators": true,
+                "noImplicitAny": false
+            })
+        },
 
         middleware: (app, express) => {
             app.use('/node_modules',
@@ -28,6 +27,16 @@
 
         setup: function (wallaby) {
             wallaby.delayStart();
+
+            System.config({
+                defaultJSExtensions: true,
+                transpiler: 'none',
+                meta: {
+                    '*': {
+                        scriptLoad: true
+                    }
+                }
+            });
 
             var promises = [];
             for (var i = 0, len = wallaby.tests.length; i < len; i++) {

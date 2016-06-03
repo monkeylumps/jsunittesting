@@ -7,11 +7,6 @@ export class SystemAdder {
         var adder = new Adder();
         this.newTotal = 10 + adder.total;
     }
-
-    var thing = new SystemAdder();
-    alert(thing.newTotal);
 }
-
-
-
-
+var thing = new SystemAdder();
+alert(thing.newTotal);
