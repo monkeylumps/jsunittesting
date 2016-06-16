@@ -2,7 +2,6 @@
     return {
         files: [
             { pattern: 'node_modules/systemjs/dist/system.js', instrument: false },
-            //{ pattern: 'config.js', instrument: false },
             { pattern: 'scripts/app/*.ts', load: false },
         ],
 
