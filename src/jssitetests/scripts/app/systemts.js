@@ -10,3 +10,4 @@ var SystemAdder = (function () {
 exports.SystemAdder = SystemAdder;
 var thing = new SystemAdder();
 alert(thing.newTotal);
+//# sourceMappingURL=systemts.js.map

@@ -12,3 +12,4 @@ var simpletests;
     var thing = new Add();
     alert(thing.total);
 })(simpletests || (simpletests = {}));
+//# sourceMappingURL=simplets.js.map

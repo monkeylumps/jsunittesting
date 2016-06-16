@@ -10,3 +10,4 @@ var Adder = (function () {
 exports.Adder = Adder;
 var thing = new Adder();
 alert(thing.total);
+//# sourceMappingURL=imported.js.map
