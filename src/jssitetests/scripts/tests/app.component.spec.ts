@@ -9,11 +9,6 @@ import {
 
 import { TestComponentBuilder } from '@angular/compiler/testing';
 
-import { By }             from '@angular/platform-browser';
-import { provide }        from '@angular/core';
-import { ViewMetadata }   from '@angular/core';
-import { PromiseWrapper } from '@angular/core/src/facade/promise';
-
 describe('test this file', () => {
     it('should add up', () => {
         var thing = new AppComponent();
@@ -26,3 +21,12 @@ describe('test this file', () => {
 });
 
 it('true is true', () => expect(true).toEqual(true));
+
+describe('AppComponent with TCB', function () {
+    it('should instantiate component',
+        async(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+            tcb.createAsync(AppComponent).then(fixture => {
+                expect(fixture.componentInstance instanceof AppComponent).toBe(true, 'should create AppComponent');
+            });
+        })));
+});
